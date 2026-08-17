@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="observatory">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hackley STEM Club</title>
+    <meta
+      name="description"
+      content="Hackley STEM Club: calendar, past events, and featured presentations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="home">
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html"><span id="club-name">Hackley STEM Club</span></a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="calendar.html" data-nav="calendar">Calendar</a>
+          <a href="events.html" data-nav="events">Past Events</a>
+          <a href="presentations.html" data-nav="presentations">Presentations</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="elevator" aria-label="Hero">
+        <div class="elevator-sticky">
+          <div class="elevator-stage" aria-hidden="true">
+            <img
+              class="elevator-slide is-active"
+              src="images/elevator/elev-01-planet.jpg"
+              alt=""
+            />
+            <div class="elevator-veil"></div>
+          </div>
+
+          <div class="elevator-copy hero-inner">
+            <h1 class="hero-brand">Hackley <em>STEM Club</em></h1>
+            <p id="club-tagline">
+              For all lovers of anything science, tech, engineering, or math.
+            </p>
+            <p class="hero-meet" id="hero-meet">Day 2 in S118</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="calendar.html">See the calendar</a>
+              <a class="btn btn-secondary" href="presentations.html">Browse presentations</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>Next up</h2>
+            <p id="meeting-note">Day 2 in S118</p>
+          </div>
+          <a class="btn btn-secondary" href="calendar.html">Full calendar</a>
+        </div>
+        <div id="home-upcoming"></div>
+      </section>
+
+      <section class="section" style="padding-top: 0">
+        <div class="section-head">
+          <div>
+            <h2>Featured talks</h2>
+            <p>Past Hackley STEM Club presentations.</p>
+          </div>
+          <a class="btn btn-secondary" href="presentations.html">All presentations</a>
+        </div>
+        <div id="home-featured"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span><span id="club-name-footer">Hackley STEM Club</span></span>
+      <span>Day 2 · S118</span>
+    </footer>
+
+    <script src="js/content.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const upcoming = document.getElementById("home-upcoming");
+        const featured = document.getElementById("home-featured");
+        upcoming.innerHTML = StemClub.renderEventRows(
+          StemClub.upcomingEvents(3),
+          "No upcoming events yet."
+        );
+        const featuredTalks = (StemClub.data.presentations || []).filter((p) => p.featured);
+        featured.innerHTML =
+          StemClub.renderFeatured(featuredTalks) ||
+          '<p class="empty">Featured talks will show up here.</p>';
+      });
+    </script>
+  </body>
+</html>

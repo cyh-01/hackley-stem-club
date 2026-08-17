@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="observatory">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact · Hackley STEM Club</title>
+    <meta name="description" content="Contact Hackley STEM Club." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="contact">
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html"><span id="club-name">Hackley STEM Club</span></a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="calendar.html" data-nav="calendar">Calendar</a>
+          <a href="events.html" data-nav="events">Past Events</a>
+          <a href="presentations.html" data-nav="presentations">Presentations</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <header class="page-hero">
+        <h1>Contact</h1>
+        <p class="contact-line">
+          Any questions: contact
+          <a href="mailto:cho@students.hackleyschool.org">Cooper H.</a>
+          (<a href="mailto:cho@students.hackleyschool.org"
+            >cho@students.hackleyschool.org</a
+          >)
+          or
+          <a href="mailto:erose@hackleyschool.org">Edmund R.</a>
+          (<a href="mailto:erose@hackleyschool.org">erose@hackleyschool.org</a>).
+        </p>
+      </header>
+
+      <section class="section contact-layout contact-layout-single" style="padding-top: 1rem">
+        <div class="contact-form-wrap">
+          <h2>Send a message</h2>
+          <form
+            class="contact-form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="honeypot" aria-hidden="true">
+              <label
+                >Don’t fill this out:
+                <input name="bot-field" tabindex="-1" autocomplete="off"
+              /></label>
+            </p>
+            <label>
+              Name
+              <input type="text" name="name" required autocomplete="name" />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required autocomplete="email" />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span><span id="club-name-footer">Hackley STEM Club</span></span>
+      <span>Day 2 · S118</span>
+    </footer>
+
+    <script src="js/content.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

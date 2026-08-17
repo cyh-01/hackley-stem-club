@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="observatory">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Presentation · Hackley STEM Club</title>
+    <meta name="description" content="Hackley STEM Club presentation viewer." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body data-page="presentations">
+    <header class="site-header">
+      <div class="nav-wrap">
+        <a class="brand" href="index.html"><span id="club-name">Hackley STEM Club</span></a>
+        <nav class="nav" aria-label="Primary">
+          <a href="index.html" data-nav="home">Home</a>
+          <a href="calendar.html" data-nav="calendar">Calendar</a>
+          <a href="events.html" data-nav="events">Past Events</a>
+          <a href="presentations.html" data-nav="presentations">Presentations</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <header class="page-hero">
+        <p class="meta" style="margin-bottom: 0.5rem">
+          <a href="presentations.html">← All presentations</a>
+        </p>
+        <h1 id="view-title">Presentation</h1>
+        <p id="view-meta"></p>
+        <p id="view-summary" class="desc" style="margin-top: 0.75rem"></p>
+        <div id="view-actions" class="cta-row" style="margin-top: 1rem"></div>
+      </header>
+
+      <section class="section" style="padding-top: 0.5rem">
+        <div id="deck-frame-wrap" class="pdf-frame-wrap" hidden>
+          <iframe id="deck-frame" title="Presentation" allowfullscreen allow="fullscreen"></iframe>
+        </div>
+        <div id="view-empty" class="empty-panel" hidden>
+          <p class="empty">
+            This presentation isn’t available yet.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span><span id="club-name-footer">Hackley STEM Club</span></span>
+      <span>Day 2 · S118</span>
+    </footer>
+
+    <script src="js/content.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      function toSlidesEmbed(url) {
+        if (!url) return "";
+        try {
+          const u = new URL(url);
+          if (!u.hostname.includes("google.com")) return "";
+
+          // Already an embed URL
+          if (u.pathname.includes("/embed")) {
+            u.searchParams.set("start", "false");
+            u.searchParams.set("loop", "false");
+            return u.toString();
+          }
+
+          // /presentation/d/ID/... or /presentation/d/e/ID/...
+          const match = u.pathname.match(
+            /\/presentation\/d\/(e\/[^/]+|[^/]+)/
+          );
+          if (!match) return "";
+          const idPath = match[1];
+          return `https://docs.google.com/presentation/d/${idPath}/embed?start=false&loop=false&delayms=60000`;
+        } catch {
+          return "";
+        }
+      }
+
+      function addButton(container, href, label, primary) {
+        const a = document.createElement("a");
+        a.className = primary ? "btn btn-primary" : "btn btn-secondary";
+        a.href = href;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = label;
+        container.appendChild(a);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        const talk = (StemClub.data.presentations || []).find((t) => t.id === id);
+        const actions = document.getElementById("view-actions");
+        const frame = document.getElementById("deck-frame");
+        const wrap = document.getElementById("deck-frame-wrap");
+        const empty = document.getElementById("view-empty");
+
+        if (!talk) {
+          document.getElementById("view-title").textContent = "Not found";
+          document.getElementById("view-meta").textContent =
+            "That presentation could not be found.";
+          empty.hidden = false;
+          return;
+        }
+
+        document.title = `${talk.title} · Hackley STEM Club`;
+        document.getElementById("view-title").textContent = talk.title;
+        const subjectNames = {
+          math: "Math",
+          cs: "CS",
+          physics: "Physics",
+          biology: "Biology",
+          chemistry: "Chemistry",
+        };
+        document.getElementById("view-meta").textContent = [
+          subjectNames[talk.subject] || "",
+          talk.presenter || StemClub.data.name,
+          talk.date ? StemClub.formatLong(talk.date) : "",
+        ]
+          .filter(Boolean)
+          .join(" · ");
+        document.getElementById("view-summary").textContent = talk.summary || "";
+
+        const slidesEmbed = toSlidesEmbed(talk.link || "");
+        let shown = false;
+
+        // Prefer Google Slides embed when available (keeps animations)
+        if (slidesEmbed) {
+          frame.src = slidesEmbed;
+          wrap.hidden = false;
+          shown = true;
+          addButton(actions, talk.link, "Open in Google Slides", false);
+        } else if (talk.file) {
+          frame.src = talk.file;
+          wrap.hidden = false;
+          shown = true;
+          addButton(actions, talk.file, "Open PDF in new tab", false);
+        } else if (talk.link) {
+          addButton(actions, talk.link, "Open presentation", true);
+          empty.hidden = false;
+          empty.querySelector(".empty").textContent =
+            "Open this presentation in a new tab.";
+          shown = true;
+        }
+
+        // If we showed Slides but also have a PDF, offer it as backup
+        if (slidesEmbed && talk.file) {
+          addButton(actions, talk.file, "Download PDF", false);
+        }
+
+        if (!shown) empty.hidden = false;
+      });
+    </script>
+  </body>
+</html>

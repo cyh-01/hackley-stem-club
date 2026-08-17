@@ -1,0 +1,3 @@
+# Optional Netlify settings for a plain static site
+[build]
+  publish = "."
