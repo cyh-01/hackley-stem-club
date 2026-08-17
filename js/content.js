@@ -13,18 +13,18 @@ window.STEM_CLUB = {
 
   contact: {
     blurb:
-      "Any questions: contact Cooper H. (cho@students.hackleyschool.org) or Edmund R. (erose@hackleyschool.org).",
+      "Any questions? Contact Cooper (cho@students.hackleyschool.org) or Edmund (erose@students.hackleyschool.org).",
     meetingTime: "Every Day 2",
     meetingPlace: "S118",
     advisors: "",
     leaders: [
       {
-        name: "Cooper H.",
+        name: "Cooper",
         email: "cho@students.hackleyschool.org",
       },
       {
-        name: "Edmund R.",
-        email: "erose@hackleyschool.org",
+        name: "Edmund",
+        email: "erose@students.hackleyschool.org",
       },
     ],
     instagram: "",
