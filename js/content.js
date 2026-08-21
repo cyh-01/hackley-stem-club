@@ -76,7 +76,7 @@ window.STEM_CLUB = {
       presenter: "Hackley STEM Club",
       date: "",
       summary:
-        "Manim is a Python library for math animations, popularized by 3Blue1Brown. Learn how to start making your own.",
+        "Popularized by famous math YouTuber 3Blue1Brown, Manim is a python library designed to help people create their own mathematical animations, similar to his own videos. In this presentation, learn how to begin using Manim for your animations.",
       link: "https://docs.google.com/presentation/d/1QROK1gFemeVfRaSNJlKfOCYxtuLiw3XJ/edit?usp=sharing",
       file: "",
       featured: false,
@@ -88,7 +88,7 @@ window.STEM_CLUB = {
       presenter: "Hackley STEM Club",
       date: "",
       summary:
-        "The sum from 1 to n: how to use and derive triangular numbers, plus tetrahedral numbers.",
+        "The sum of all integers from 1 to n, triangular numbers are a quintessential mathematical tool. In this presentation, learn how to use & derive triangular numbers, along with tetrahedral numbers.",
       link: "https://docs.google.com/presentation/d/1Ch1U65ePzzeeWppGdqe5G3SPwGC3x81uNvkPE0xitMQ/edit?usp=sharing",
       file: "",
       featured: false,
@@ -112,7 +112,7 @@ window.STEM_CLUB = {
       presenter: "Hackley STEM Club",
       date: "",
       summary:
-        "Where E=mc² comes from: time dilation, length contraction, why they happen, and a bit of the history behind special relativity.",
+        "Ever wonder where E=mc^2 comes from? In this presentation, you'll learn about some of the most drastic effects (such as time dilation & length contraction) SR has, why they exist, and some of the history behind it.",
       link: "https://docs.google.com/presentation/d/1UJjmQE2EFdPmBXB0mcg3lJXOzkCzkjDU/edit?usp=sharing",
       file: "",
       featured: true,
@@ -124,7 +124,7 @@ window.STEM_CLUB = {
       presenter: "Hackley STEM Club",
       date: "",
       summary:
-        "The same process that powers the sun: nearly limitless fuel, little carbon, and breakthroughs that could reshape energy on Earth.",
+        "Imagine powering the entire world with a fuel source that's virtually limitless and produces little to no carbon emissions. Nuclear fusion, the same process that powers the sun, is finally becoming a reality on Earth.",
       link: "https://docs.google.com/presentation/d/1Z0OKcE3E6IwJ6EmERz7Rbf2Z56KXXBC7/edit?usp=sharing",
       file: "",
       featured: false,
@@ -136,7 +136,7 @@ window.STEM_CLUB = {
       presenter: "Hackley STEM Club",
       date: "",
       summary:
-        "How the body protects itself from invaders: what the immune system is and how it works.",
+        "The immune system is an integral part of biology -- it's how the body protects itself from unwanted invaders. In this presentation, learn more about exactly what it is, and how the immune system functions.",
       link: "https://docs.google.com/presentation/d/1Y460WhkLspSJal9UMvf0bgtfEjRfEXA1-fYB0zmLu9Y/edit?usp=sharing",
       file: "",
       featured: true,
